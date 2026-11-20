@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #F2F1EC;
+    color: #111111;
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    background-color: #F2F1EC;
+    color: #111111;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #FF3B00;
+    color: #111111;
+  }
+
+  :focus-visible {
+    outline: 2px solid #FF3B00;
+    outline-offset: 2px;
+  }
+}
+
+/* SWISS SPEC SHEET RULE: 0px radius everywhere. Unlayered so it beats utilities. */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* The only round shape allowed: small LED indicator dots. */
+.led {
+  border-radius: 9999px !important;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* Guard against horizontal overflow of "LUMBANTORUAN" on very narrow phones. */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 2.45rem;
+  }
+}
+
+.case-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.contact-title {
+  font-size: clamp(2.2rem, 5vw, 4.25rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
